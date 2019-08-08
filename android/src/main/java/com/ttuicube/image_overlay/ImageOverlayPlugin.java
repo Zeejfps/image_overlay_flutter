@@ -49,7 +49,6 @@ public class ImageOverlayPlugin implements MethodCallHandler {
       ExifInterface exif = new ExifInterface(dstPath);
 
       int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
-      System.out.println("Orientation: " + orientation);
 
       switch (orientation) {
         case ExifInterface.ORIENTATION_ROTATE_90:
@@ -63,18 +62,9 @@ public class ImageOverlayPlugin implements MethodCallHandler {
           break;
       }
 
-
     } catch (IOException e) {
       e.printStackTrace();
     }
-
-
-    /*if (dstBitmap.getWidth() > dstBitmap.getHeight()) {
-      Matrix mat = new Matrix();
-      mat.postRotate(-90);
-      dstBitmap = Bitmap.createBitmap(dstBitmap, 0, 0, dstBitmap.getWidth(), dstBitmap.getHeight(), mat, true);
-    }
-    System.out.println(dstBitmap);
 
     float aspect = srcBitmap.getWidth() / (float)srcBitmap.getHeight();
     int width = dstBitmap.getWidth();
@@ -84,7 +74,7 @@ public class ImageOverlayPlugin implements MethodCallHandler {
 
     Canvas canvas = new Canvas(dstBitmap);
     canvas.drawBitmap(srcBitmap, 0, dstBitmap.getHeight() - height, null);
-*/
+
     try {
       FileOutputStream fo = new FileOutputStream(dstPath);
       dstBitmap.compress(Bitmap.CompressFormat.JPEG, 90, fo);
