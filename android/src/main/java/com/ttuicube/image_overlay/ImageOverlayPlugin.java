@@ -53,10 +53,13 @@ public class ImageOverlayPlugin implements MethodCallHandler {
 
       switch (orientation) {
         case ExifInterface.ORIENTATION_ROTATE_90:
+          dstBitmap = rotate(dstBitmap, 90);
           break;
         case ExifInterface.ORIENTATION_ROTATE_180:
+          dstBitmap = rotate(dstBitmap, 180);
           break;
         case ExifInterface.ORIENTATION_ROTATE_270:
+          dstBitmap = rotate(dstBitmap, 270);
           break;
       }
 
@@ -91,5 +94,11 @@ public class ImageOverlayPlugin implements MethodCallHandler {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  private Bitmap rotate(Bitmap src, int degrees) {
+    Matrix mat = new Matrix();
+    mat.postRotate(degrees);
+    return Bitmap.createBitmap(src, 0, 0, src.getWidth(), src.getHeight(), mat, true);
   }
 }
