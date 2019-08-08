@@ -46,7 +46,7 @@ public class ImageOverlayPlugin implements MethodCallHandler {
     Bitmap dstBitmap = BitmapFactory.decodeFile(dstPath);
 
     try {
-      ExifInterface exif = new ExifInterface(dstBitmap);
+      ExifInterface exif = new ExifInterface(dstPath);
 
       int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
       System.out.println("Orientation: " + orientation);
