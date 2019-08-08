@@ -42,7 +42,9 @@ public class ImageOverlayPlugin implements MethodCallHandler {
     options.inMutable = true;
 
     Bitmap srcBitmap = BitmapFactory.decodeFile(srcPath);
-    Bitmap dstBitmap = BitmapFactory.decodeFile(dstPath, options);
+    Bitmap dstBitmap = BitmapFactory.decodeFile(dstPath);
+
+    System.out.println("yep");
 
     /*if (dstBitmap.getWidth() > dstBitmap.getHeight()) {
       Matrix mat = new Matrix();
