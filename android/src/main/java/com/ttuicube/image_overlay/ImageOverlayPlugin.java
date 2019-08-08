@@ -47,8 +47,9 @@ public class ImageOverlayPlugin implements MethodCallHandler {
     if (dstBitmap.getWidth() > dstBitmap.getHeight()) {
       Matrix mat = new Matrix();
       mat.postRotate(90);
-      dstBitmap = Bitmap.createBitmap(dstBitmap, 0, 0, dstBitmap.getHeight(), dstBitmap.getWidth(), mat, true);
+      dstBitmap = Bitmap.createBitmap(dstBitmap, 0, 0, dstBitmap.getWidth(), dstBitmap.getHeight(), mat, true);
     }
+    System.out.println(dstBitmap);
 
     float aspect = srcBitmap.getWidth() / (float)srcBitmap.getHeight();
     int width = dstBitmap.getWidth();
