@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.media.ExifInterface;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,7 +45,17 @@ public class ImageOverlayPlugin implements MethodCallHandler {
     Bitmap srcBitmap = BitmapFactory.decodeFile(srcPath);
     Bitmap dstBitmap = BitmapFactory.decodeFile(dstPath);
 
-    System.out.println("yep");
+    try {
+      ExifInterface exif = new ExifInterface(srcPath);
+
+      int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+      System.out.println("Orientation: " + orientation);
+
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
 
     /*if (dstBitmap.getWidth() > dstBitmap.getHeight()) {
       Matrix mat = new Matrix();
