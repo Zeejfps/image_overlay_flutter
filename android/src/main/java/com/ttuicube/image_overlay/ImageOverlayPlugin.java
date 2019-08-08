@@ -44,7 +44,7 @@ public class ImageOverlayPlugin implements MethodCallHandler {
     Bitmap srcBitmap = BitmapFactory.decodeFile(srcPath);
     Bitmap dstBitmap = BitmapFactory.decodeFile(dstPath, options);
 
-    if (dstBitmap.getWidth() > dstBitmap.getHeight()) {
+    /*if (dstBitmap.getWidth() > dstBitmap.getHeight()) {
       Matrix mat = new Matrix();
       mat.postRotate(-90);
       dstBitmap = Bitmap.createBitmap(dstBitmap, 0, 0, dstBitmap.getWidth(), dstBitmap.getHeight(), mat, true);
@@ -59,7 +59,7 @@ public class ImageOverlayPlugin implements MethodCallHandler {
 
     Canvas canvas = new Canvas(dstBitmap);
     canvas.drawBitmap(srcBitmap, 0, dstBitmap.getHeight() - height, null);
-
+*/
     try {
       FileOutputStream fo = new FileOutputStream(dstPath);
       dstBitmap.compress(Bitmap.CompressFormat.JPEG, 90, fo);
