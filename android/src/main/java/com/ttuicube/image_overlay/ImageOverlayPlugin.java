@@ -43,7 +43,7 @@ public class ImageOverlayPlugin implements MethodCallHandler {
     options.inMutable = true;
 
     Bitmap srcBitmap = BitmapFactory.decodeFile(srcPath);
-    Bitmap dstBitmap = BitmapFactory.decodeFile(dstPath);
+    Bitmap dstBitmap = BitmapFactory.decodeFile(dstPath, options);
 
     try {
       ExifInterface exif = new ExifInterface(dstPath);
