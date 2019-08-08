@@ -3,6 +3,7 @@ package com.ttuicube.image_overlay;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,6 +43,12 @@ public class ImageOverlayPlugin implements MethodCallHandler {
 
     Bitmap srcBitmap = BitmapFactory.decodeFile(srcPath);
     Bitmap dstBitmap = BitmapFactory.decodeFile(dstPath, options);
+
+    if (dstBitmap.getWidth() > dstBitmap.getHeight()) {
+      Matrix mat = new Matrix();
+      mat.postRotate(90);
+      dstBitmap = Bitmap.createBitmap(dstBitmap, 0, 0, dstBitmap.getHeight(), dstBitmap.getWidth(), mat, true);
+    }
 
     float aspect = srcBitmap.getWidth() / (float)srcBitmap.getHeight();
     int width = dstBitmap.getWidth();
